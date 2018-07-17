@@ -1,19 +1,19 @@
 
-def factorial(n):
-    if n > 1 :
-        return n*factorial(n-1);
-    return 1
+class Solution:
+    def __init__(self):
+        self.factorialArray = [1,1] # 0!
 
-def nRows():
-    print()
+    def factorial(self, n):
+        if len(factorialArray) < n :
+             self.factorialArray.append(n*factorial(n-1))
+             return self.factorialArray[n]
+        return self.factorialArray[n]
+       
     
-
-def main(rows):
-    for item in range(rows).reverse():
-        print("")
+    
+    def generate(self, numRows):
+        """
+        :type numRows: int
+        :rtype: List[List[int]]
+        """
         
-        
-    
-if __name__ == '__main__':
-    main()
-    

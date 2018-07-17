@@ -8,19 +8,15 @@ def createRow(beforeArray):
 
 def main(rows):
     array = [[1]]
-    for item in range(rows):
+    for item in range(rows-1):
         array.append(createRow(array[item]))
     
-    s = rows*2
+    s = rows*1
     
-    for item in array:
-        print(" "*s,item)
-        s-=2
-    
-        
-    
-
+    for item in array :        
+        print("  "*s,item,end=",\n")
+        s-=1
 
 if __name__ == '__main__':
-    main(5)
+    main(4)
     

@@ -3,14 +3,14 @@ from LC118v2 import Solution2
 from datetime import datetime
 
 def main():
-    rowNo = 800
+    rowNo = 0
 
     y = Solution1()
     ts = datetime.now().timestamp()
     s = y.generate(rowNo)
     tf = datetime.now().timestamp()
 
-    # print(s)
+    print(s)
     print("\n")
     print("Solution 1 :",(tf-ts), " second")
     
@@ -19,7 +19,7 @@ def main():
     s = y.generate(rowNo)
     tf = datetime.now().timestamp()
     
-    # print(s)
+    print(s)
     print("\n")
     print("Solution 2 :",(tf-ts), " second")
 

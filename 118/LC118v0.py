@@ -9,9 +9,12 @@ class Solution1:
         return newArray
 
     def main(self,rows):
-        array = [[1]]
-        for item in range(rows-1):
-            array.append(self.createRow(array[item]))
+        array = []
+        for item in range(0,rows-1):
+            if(i == 0 ):
+                array.append([1])
+            else :
+                array.append(self.createRow(array[item]))
         
         # s = rows*1
         

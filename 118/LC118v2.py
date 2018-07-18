@@ -17,7 +17,7 @@ class Solution2:
     
     def generate(self, numRows):
         result = []
-        for i in range(0,numRows-1):           
+        for i in range(0,numRows):           
             result.append(self.getNthRow(i))
         return result
         """

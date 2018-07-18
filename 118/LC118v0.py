@@ -10,11 +10,11 @@ class Solution1:
 
     def main(self,rows):
         array = []
-        for item in range(0,rows-1):
+        for i in range(0,rows):
             if(i == 0 ):
                 array.append([1])
             else :
-                array.append(self.createRow(array[item]))
+                array.append(self.createRow(array[i-1]))
         
         # s = rows*1
         

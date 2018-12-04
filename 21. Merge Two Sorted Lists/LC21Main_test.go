@@ -10,7 +10,7 @@ package LeetCode
 
 import (
 	"github.com/stretchr/testify/assert"
-	
+
 	"testing"
 )
 
@@ -36,10 +36,10 @@ func Test_mergeTwoLists(t *testing.T) {
 		{
 			name: "test2",
 			args: args{
-				l1: []int{1,2,4,4,4,4},
-				l2: []int{1,3,4,6,6,64,100},
+				l1: []int{1, 2, 4, 4, 4, 4},
+				l2: []int{1, 3, 4, 6, 6, 64, 100},
 			},
-			want: []int{1,1,2,3,4,4,4,4,4,6,6,64,100},
+			want: []int{1, 1, 2, 3, 4, 4, 4, 4, 4, 6, 6, 64, 100},
 		},
 	}
 	for _, tt := range tests {
@@ -47,20 +47,26 @@ func Test_mergeTwoLists(t *testing.T) {
 			l1 := makeListNode(tt.args.l1)
 			l2 := makeListNode(tt.args.l2)
 			want := makeListNode(tt.want)
-			got := mergeTwoLists(l1,l2)
-			assert.Equal(t, ListToArray(want),ListToArray(got))
-			
+			got := mergeTwoLists(l1, l2)
+			assert.Equal(t, ListToArray(want), ListToArray(got))
+
 		})
 	}
 }
 func makeListNode(a []int) *ListNode {
 
-	result := &ListNode{}
+	var result *ListNode
+
+	if len(a) == 0 {
+		return result
+	}
+	result = new(ListNode)
+	result.Val = a[0]
 	iter := result
-	for i := 0; i < len(a); i++ {
-		iter.Val = a[i]
+	for i := 1; i < len(a); i++ {
 		iter.Next = new(ListNode)
 		iter = iter.Next
+		iter.Val = a[i]		
 	}
 	return result
 }

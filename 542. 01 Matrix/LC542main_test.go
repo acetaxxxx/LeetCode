@@ -18,9 +18,9 @@ func Test_updateMatrix(t *testing.T) {
 		{
 			name: "first",
 			args: args{
-				matrix:[][]int {{1,2,3,4},{3,4,5,6}},
+				matrix:[][]int {{0,0,1,0},{0,0,0,1}},
 			},
-			want: [][]int{{}},
+			want: [][]int{{0,0,1,0},{0,0,0,1}},
 
 		},
 	}

@@ -8,33 +8,34 @@ type MyNode struct {
 
 func (this *MyNode) Push(val int) {
 	n := MyNode{
-		Next : nil,
-		Prev : nil,
-		Val :val,
+		Next: nil,
+		Prev: nil,
+		Val:  val,
 	}
 
-	if this.Next !=nil{
+	if this.Next != nil {
 		n.Next = this.Next
 		this.Next = &n
 		n.Prev = this
 	} else {
 		n.Prev = this
-		this.Next = &n		
+		this.Next = &n
 	}
-	
 }
 
-func (this *MyNode) Pop() {
-	if this.Next != nil && this.Prev != nil{
-		prev := this.Prev
-		next := this.Next
-		prev.Next = next
-		next.Prev = prev
+func (this *MyNode) PopNext() {
+	if this.Next == nil{
 		return
-	}else if this.Next == nil{
-		this.Prev.Next = nil
+	}
+	if this.Next.Next != nil  {
+		this.Next = this.Next.Next
+		this.Next.Prev = this
+		
 		return
-	}	
+	} else if this.Next.Next == nil {
+		this.Next = nil		
+		return
+	}
 }
 
 type MyLinkedList struct {
@@ -76,9 +77,8 @@ func (this *MyLinkedList) AddAtHead(val int) {
 	if this.Size == 0 {
 		this.Node = n
 	} else {
-		n.Next = this.Node
-		n.Prev = nil
 		this.Node.Prev = n
+		n.Next = this.Node
 		this.Node = n
 	}
 	this.Size++
@@ -90,7 +90,7 @@ func (this *MyLinkedList) AddAtTail(val int) {
 	for ; iter.Next != nil; iter = iter.Next {
 
 	}
-	iter.Push(val)	
+	iter.Push(val)
 	this.Size++
 }
 
@@ -119,19 +119,18 @@ func (this *MyLinkedList) AddAtIndex(index int, val int) {
 
 /** Delete the index-th node in the linked list, if the index is valid. */
 func (this *MyLinkedList) DeleteAtIndex(index int) {
-	if this.Size <= index || index < 0 {
+	if this.Size < index || index < 0 {
 		return
 	}
 	if index == 0 {
 		this.Node = this.Node.Next
 
 	} else {
-		iter := this.Node.Next
-		for i := 1; i <= index; iter, i = iter.Next, i+1 {
-			if i == index {
-				iter.Pop()
-			}
+		iter := this.Node
+		for i := 0; i < index;  i++{
+			iter = iter.Next
 		}
+		iter.PopNext()
 	}
 	this.Size--
 }

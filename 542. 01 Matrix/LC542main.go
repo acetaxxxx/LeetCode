@@ -110,9 +110,14 @@ func minDistance(i, j, m, n int, matrix [][]int) int {
 func calresultmain(matrix [][]int) {
 	m := len(matrix)
 	n := len(matrix[0])
-	result := make([][]uint8, m)
+	result := make([][]int, m)
 	for i := range result {
-		result[i] = make([]uint8, n)
+		result[i] = make([]int, n)
+		for j :=range result[i]{
+			result[i][j] = math.MaxInt32
+		}
 	}
+	
+	
 
 }

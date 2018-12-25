@@ -19,14 +19,11 @@ func makesquare(nums []int) bool {
 		return false
 	}
 	result := make([]int, 4)
-	for i :=0 ;i<len(result);i++{
+	for i := 0; i < len(result); i++ {
 
 	}
 	return true
 }
-
-
-
 
 func makesquare1(nums []int) bool {
 	if len(nums) <= 0 {
@@ -76,12 +73,22 @@ func findMinIndex(arr []int) int {
 	return minIndex
 }
 
-func DeleteIndexAt(arr []int, index int) {
+func fillLateral(arr []int, target int) {
+	tmpArray := arr[:]
+	sum := 0
+	for i := len(arr) - 1; i >= 0; i-- {
+		if arr[i]+tmp < target {
+			tmp = tmp + arr[i]
+		}
+	}
+}
+
+func deleteIndexAt(arr []int, index int) []int {
 	if index >= len(arr) || index < 0 {
-		return
+		return nil
 	}
 
 	copy(arr[index:], arr[index+1:])
 	arr = arr[:len(arr)-1]
-
+	return arr
 }

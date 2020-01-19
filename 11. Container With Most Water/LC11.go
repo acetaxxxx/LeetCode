@@ -1,4 +1,4 @@
-﻿package LC11
+package LC11
 
 import (
 	"math"

@@ -66,7 +66,7 @@ func makeListNode(a []int) *ListNode {
 	for i := 1; i < len(a); i++ {
 		iter.Next = new(ListNode)
 		iter = iter.Next
-		iter.Val = a[i]		
+		iter.Val = a[i]
 	}
 	return result
 }
@@ -77,4 +77,5 @@ func ListToArray(l *ListNode) []int {
 		l = l.Next
 	}
 	return r
+
 }

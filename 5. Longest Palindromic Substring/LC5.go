@@ -1,7 +1,7 @@
-﻿package lc5
+package lc5
 
 func longestPalindrome(s string) string {
-	
+
 	for long := len(s); long >= 2; long-- {
 		for shift := 0; shift <= len(s)-long; shift++ {
 			t := []rune(s)
@@ -11,7 +11,7 @@ func longestPalindrome(s string) string {
 			}
 		}
 	}
-	t1:=[]rune(s)
+	t1 := []rune(s)
 	return string(t1[0])
 }
 func isPalindromic(s string) bool {

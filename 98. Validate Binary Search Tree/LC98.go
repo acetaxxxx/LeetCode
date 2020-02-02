@@ -8,6 +8,9 @@ package lc98
  *     Right *TreeNode
  * }
  */
+
+import "math"
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -20,17 +23,23 @@ func isValidBST(root *TreeNode) bool {
 	if root == nil {
 		return true
 	}
-	// if node left not exist but right exist
-	if root.Left == nil && root.Right != nil {
+
+	return validate(root, math.Inf(-1), math.Inf(1))
+}
+
+func validate(root *TreeNode, minValue float64, maxValue float64) bool {
+	if root == nil {
+		return true
+	}
+	if float64(root.Val) <= minValue || float64(root.Val) >= maxValue {
+		return false
+	}
+	if root.Left != nil && root.Left.Val >= root.Val {
+		return false
+	}
+	if root.Right != nil && root.Right.Val <= root.Val {
 		return false
 	}
 
-	if root.Left != nil && root.Val < root.Left.Val {
-		return false
-	}
-
-	if root.Right != nil && root.Val > root.Right.Val {
-		return false
-	}
-	return isValidBST(root.Left) || isValidBST(root.Right)
+	return validate(root.Left, minValue,float64( root.Val)) && validate(root.Right, float64(root.Val), maxValue)
 }
